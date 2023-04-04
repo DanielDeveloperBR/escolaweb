@@ -58,7 +58,6 @@ public class FuncionarioService extends DAO {
         stmt.setString(1, id);
         stmt.executeUpdate();
         stmt.close();
-    
         // Remove o registro da tabela funcionario, se existir
         sql = "DELETE FROM funcionario WHERE _id_pessoa = ?";
         stmt = conn.prepareStatement(sql);
