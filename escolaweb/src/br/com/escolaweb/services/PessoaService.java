@@ -18,18 +18,17 @@ public class PessoaService extends DAO {
         stman.execute();
         stman.close();
     }
-    public void update(Funcionario funcionario) throws SQLException {
-        // atualiza o registro na tabela pessoa
-        PessoaService pessoaService = new PessoaService();
-        pessoaService.update(funcionario);
-    
-        // atualiza o registro na tabela funcionario
-        String sql = "UPDATE funcionario SET cargo = ? WHERE _id_pessoa = ?";
+    public void update(Pessoa pessoa) throws Exception {
+        
+        String sql2 = "UPDATE pessoa SET (_id, nome, email, data_nasc, senha) values (?,?,?,?,?) WHERE _id_pessoa = ?";
         Conectar();
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setString(1, funcionario.getCargo());
-        stmt.setString(2, funcionario.getId());
-        stmt.executeUpdate();
-        stmt.close();
+        PreparedStatement stman = conn.prepareStatement(sql2);
+        stman.setString(1, pessoa.getId());
+        stman.setString(2, pessoa.getNome());
+        stman.setString(3, pessoa.getEmail());
+        stman.setDate(4, null, pessoa.getDataNasc());
+        stman.setString(5, pessoa.getSenha());
+        stman.execute();
+        stman.close();
     }
 }

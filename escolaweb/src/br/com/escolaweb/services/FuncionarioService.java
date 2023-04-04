@@ -69,7 +69,7 @@ public class FuncionarioService extends DAO {
     
 
 
-    public void update(Funcionario funcionario) throws SQLException {
+    public void update(Funcionario funcionario) throws Exception {
         // Atualiza o registro na tabela pessoa
         PessoaService pessoaService = new PessoaService();
         pessoaService.update(funcionario);
@@ -83,8 +83,4 @@ public class FuncionarioService extends DAO {
         stmt.executeUpdate();
         stmt.close();
     }
-    
-    
-    
-    
 }
